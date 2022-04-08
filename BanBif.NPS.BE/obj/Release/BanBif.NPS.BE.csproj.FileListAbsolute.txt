@@ -1,0 +1,6 @@
+C:\Personal\Banbif\Innovacion\BanBif.NPS\BanBif.NPS.BE\bin\Release\BanBif.NPS.BE.dll
+C:\Personal\Banbif\Innovacion\BanBif.NPS\BanBif.NPS.BE\bin\Release\BanBif.NPS.BE.pdb
+C:\Personal\Banbif\Innovacion\BanBif.NPS\BanBif.NPS.BE\obj\Release\BanBif.NPS.BE.csproj.AssemblyReference.cache
+C:\Personal\Banbif\Innovacion\BanBif.NPS\BanBif.NPS.BE\obj\Release\BanBif.NPS.BE.csproj.CoreCompileInputs.cache
+C:\Personal\Banbif\Innovacion\BanBif.NPS\BanBif.NPS.BE\obj\Release\BanBif.NPS.BE.dll
+C:\Personal\Banbif\Innovacion\BanBif.NPS\BanBif.NPS.BE\obj\Release\BanBif.NPS.BE.pdb

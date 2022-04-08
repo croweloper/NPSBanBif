@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="panelModel1StoreContainer" CdmEntityContainer="panelEntities1">
+    <EntitySetMapping Name="NPS_NUEVO_RESULTADO">
+      <EntityTypeMapping TypeName="panelModel1.NPS_NUEVO_RESULTADO">
+        <MappingFragment StoreEntitySet="NPS_NUEVO_RESULTADO">
+          <ScalarProperty Name="IDRESULTADO" ColumnName="IDRESULTADO" />
+          <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="canal" ColumnName="canal" />
+          <ScalarProperty Name="oficina" ColumnName="oficina" />
+          <ScalarProperty Name="VOTO" ColumnName="VOTO" />
+          <ScalarProperty Name="comentario_VOTO" ColumnName="comentario_VOTO" />
+          <ScalarProperty Name="COMENTARIO_PREG2" ColumnName="COMENTARIO_PREG2" />
+          <ScalarProperty Name="COMENTARIO_PREG3" ColumnName="COMENTARIO_PREG3" />
+          <ScalarProperty Name="fecharesultado" ColumnName="fecharesultado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NPS_NUEVO_RESULTADO_MATRIZ">
+      <EntityTypeMapping TypeName="panelModel1.NPS_NUEVO_RESULTADO_MATRIZ">
+        <MappingFragment StoreEntitySet="NPS_NUEVO_RESULTADO_MATRIZ">
+          <ScalarProperty Name="IDRESULTADO" ColumnName="IDRESULTADO" />
+          <ScalarProperty Name="idpregunta" ColumnName="idpregunta" />
+          <ScalarProperty Name="idtipo_respuesta" ColumnName="idtipo_respuesta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="panelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_aSINTO_GRUPOPREGUNTA">
+    <Key>
+      <PropertyRef Name="CODIGOGRUPO" />
+    </Key>
+    <Property Name="CODIGOGRUPO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GRUPO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FLAGSINO" Type="Int32" />
+    <Property Name="ORDEN" Type="Int32" />
+    <Property Name="CODIGOFORMULARIO" Type="Int32" />
+    <Property Name="ESTADO" Type="Int32" />
+    <NavigationProperty Name="tbl_aSINTO_PREGUNTA" Relationship="Self.FK__tbl_aSINT__CODIG__02F31DC9" FromRole="tbl_aSINTO_GRUPOPREGUNTA" ToRole="tbl_aSINTO_PREGUNTA" />
+    <NavigationProperty Name="tbl_mSINTO_FORMULARIO" Relationship="Self.FK__tbl_aSINT__CODIG__7E2E68AC" FromRole="tbl_aSINTO_GRUPOPREGUNTA" ToRole="tbl_mSINTO_FORMULARIO" />
+  </EntityType>
+  <EntityType Name="tbl_aSINTO_MENSAJES">
+    <Key>
+      <PropertyRef Name="CODIGOMENSAJE" />
+    </Key>
+    <Property Name="CODIGOMENSAJE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MENSAJE" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+    <Property Name="MENSAJEHTML" Type="String" MaxLength="6000" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="Int32" />
+    <NavigationProperty Name="tbl_aSINTO_REGISTRO" Relationship="Self.FK__tbl_aSINT__CODIG__4476C863" FromRole="tbl_aSINTO_MENSAJES" ToRole="tbl_aSINTO_REGISTRO" />
+  </EntityType>
+  <EntityType Name="tbl_aSINTO_OPCIONES">
+    <Key>
+      <PropertyRef Name="CODIGOOPCION" />
+    </Key>
+    <Property Name="CODIGOOPCION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OPCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ESTADO" Type="Int32" Nullable="false" />
+    <Property Name="CODIGOPREGUNTA" Type="Int32" />
+    <Property Name="IMAGEN" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ORDEN" Type="Int32" />
+    <Property Name="FLAGOTRO" Type="Int32" />
+    <Property Name="CODIGOPREGUNTA_MOSTRAR" Type="Int32" />
+    <NavigationProperty Name="tbl_aSINTO_PREGUNTA" Relationship="Self.FK__tbl_aSINT__CODIG__18E25EE8" FromRole="tbl_aSINTO_OPCIONES" ToRole="tbl_aSINTO_PREGUNTA" />
+  </EntityType>
+  <EntityType Name="tbl_aSINTO_PREGUNTA">
+    <Key>
+      <PropertyRef Name="CODIGOPREGUNTA" />
+    </Key>
+    <Property Name="CODIGOPREGUNTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PREGUNTA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CODIGOGRUPO" Type="Int32" />
+    <Property Name="ESTADO" Type="Int32" Nullable="false" />
+    <Property Name="CODIGOTIPOPREGUNTA" Type="Int32" />
+    <Property Name="ORDEN" Type="Int32" />
+    <Property Name="OBLIGATORIO" Type="Int32" />
+    <Property Name="DEPENDIENTE" Type="Boolean" />
+    <Property Name="TEXTO_AYUDA" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbl_aSINTO_GRUPOPREGUNTA" Relationship="Self.FK__tbl_aSINT__CODIG__02F31DC9" FromRole="tbl_aSINTO_PREGUNTA" ToRole="tbl_aSINTO_GRUPOPREGUNTA" />
+    <NavigationProperty Name="tbl_aSINTO_OPCIONES" Relationship="Self.FK__tbl_aSINT__CODIG__18E25EE8" FromRole="tbl_aSINTO_PREGUNTA" ToRole="tbl_aSINTO_OPCIONES" />
+    <NavigationProperty Name="tbl_aSINTO_TIPOPREGUNTA" Relationship="Self.FK__tbl_aSINT__CODIG__03E74202" FromRole="tbl_aSINTO_PREGUNTA" ToRole="tbl_aSINTO_TIPOPREGUNTA" />
+  </EntityType>
+  <EntityType Name="tbl_aSINTO_PROCESO">
+    <Key>
+      <PropertyRef Name="CODIGOREGISTRO" />
+    </Key>
+    <Property Name="CODIGOREGISTRO" Type="Int32" Nullable="false" />
+    <Property Name="FECHAREGISTRO" Type="DateTime" Precision="3" />
+    <Property Name="PROCESADO" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbl_aSINTO_REGISTRO">
+    <Key>
+      <PropertyRef Name="CODREGISTRO" />
+    </Key>
+    <Property Name="CODREGISTRO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CODAUTOGENERADO" Type="Int32" Nullable="false" />
+    <Property Name="CODIGOFORMULARIO" Type="Int32" Nullable="false" />
+    <Property Name="PUESTO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="AREA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CELULAR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ANEXO" Type="Int32" />
+    <Property Name="CHECKTERMINOS" Type="Boolean" />
+    <Property Name="FECHAREGISTRO" Type="DateTime" Precision="3" />
+    <Property Name="ESCOLABORADOR" Type="Boolean" />
+    <Property Name="ESTADO" Type="Int32" />
+    <Property Name="PROCESADO" Type="Int32" />
+    <Property Name="FECHA" Type="DateTime" Precision="0" />
+    <Property Name="CODIGOMENSAJE" Type="Int32" />
+    <NavigationProperty Name="tbl_aSINTO_MENSAJES" Relationship="Self.FK__tbl_aSINT__CODIG__4476C863" FromRole="tbl_aSINTO_REGISTRO" ToRole="tbl_aSINTO_MENSAJES" />
+  </EntityType>
+  <EntityType Name="tbl_aSINTO_REPORTE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DNINOMBRE" Type="String" MaxLength="800" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CELULAR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHAREGISTRO" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OFICINASEDE" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TIPOTRABAJADOR" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SINTOFAMILIAR" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VACUNADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FORMATRABAJO" Type="String" MaxLength="600" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_aSINTO_RESPUESTA">
+    <Key>
+      <PropertyRef Name="CODGIORESPUESTA" />
+    </Key>
+    <Property Name="CODGIORESPUESTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CODREGISTRO" Type="Int32" Nullable="false" />
+    <Property Name="CODIGOGRUPO" Type="Int32" Nullable="false" />
+    <Property Name="CODIGOPREGUNTA" Type="Int32" Nullable="false" />
+    <Property Name="TEXTO_OTRO" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ESTADO" Type="Int32" />
+    <Property Name="OPCION" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="OPCION2" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_aSINTO_TIPOPREGUNTA">
+    <Key>
+      <PropertyRef Name="CODIGOTIPOPREGUNTA" />
+    </Key>
+    <Property Name="CODIGOTIPOPREGUNTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ESTADO" Type="Int32" />
+    <NavigationProperty Name="tbl_aSINTO_PREGUNTA" Relationship="Self.FK__tbl_aSINT__CODIG__03E74202" FromRole="tbl_aSINTO_TIPOPREGUNTA" ToRole="tbl_aSINTO_PREGUNTA" />
+  </EntityType>
+  <EntityType Name="tbl_mSINTO_COLABORADOR">
+    <Key>
+      <PropertyRef Name="CODAUTOGENERADO" />
+    </Key>
+    <Property Name="CODAUTOGENERADO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CODCOLABORADOR" Type="Int32" Nullable="false" />
+    <Property Name="NOMBRESAPELLIDOS" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DOCUMENTO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PUESTO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AREA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CELULAR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CORREO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="USUARIOWINDOWS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ESCOLABORADOR" Type="Boolean" />
+    <Property Name="ESTADO" Type="Int32" />
+    <Property Name="ANEXO" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_mSINTO_FORMULARIO">
+    <Key>
+      <PropertyRef Name="CODIGOFORMULARIO" />
+    </Key>
+    <Property Name="CODIGOFORMULARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TITULO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCIONTITULO" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SUBTITULO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCIONSUBTITULO" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TERMINOSCONDICIONES" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ESTADO" Type="Int32" />
+    <NavigationProperty Name="tbl_aSINTO_GRUPOPREGUNTA" Relationship="Self.FK__tbl_aSINT__CODIG__7E2E68AC" FromRole="tbl_mSINTO_FORMULARIO" ToRole="tbl_aSINTO_GRUPOPREGUNTA" />
+  </EntityType>
+  <Association Name="FK__tbl_aSINT__CODIG__02F31DC9">
+    <End Role="tbl_aSINTO_GRUPOPREGUNTA" Type="Self.tbl_aSINTO_GRUPOPREGUNTA" Multiplicity="0..1" />
+    <End Role="tbl_aSINTO_PREGUNTA" Type="Self.tbl_aSINTO_PREGUNTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_aSINTO_GRUPOPREGUNTA">
+        <PropertyRef Name="CODIGOGRUPO" />
+      </Principal>
+      <Dependent Role="tbl_aSINTO_PREGUNTA">
+        <PropertyRef Name="CODIGOGRUPO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_aSINT__CODIG__7E2E68AC">
+    <End Role="tbl_mSINTO_FORMULARIO" Type="Self.tbl_mSINTO_FORMULARIO" Multiplicity="0..1" />
+    <End Role="tbl_aSINTO_GRUPOPREGUNTA" Type="Self.tbl_aSINTO_GRUPOPREGUNTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_mSINTO_FORMULARIO">
+        <PropertyRef Name="CODIGOFORMULARIO" />
+      </Principal>
+      <Dependent Role="tbl_aSINTO_GRUPOPREGUNTA">
+        <PropertyRef Name="CODIGOFORMULARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_aSINT__CODIG__4476C863">
+    <End Role="tbl_aSINTO_MENSAJES" Type="Self.tbl_aSINTO_MENSAJES" Multiplicity="0..1" />
+    <End Role="tbl_aSINTO_REGISTRO" Type="Self.tbl_aSINTO_REGISTRO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_aSINTO_MENSAJES">
+        <PropertyRef Name="CODIGOMENSAJE" />
+      </Principal>
+      <Dependent Role="tbl_aSINTO_REGISTRO">
+        <PropertyRef Name="CODIGOMENSAJE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_aSINT__CODIG__18E25EE8">
+    <End Role="tbl_aSINTO_PREGUNTA" Type="Self.tbl_aSINTO_PREGUNTA" Multiplicity="0..1" />
+    <End Role="tbl_aSINTO_OPCIONES" Type="Self.tbl_aSINTO_OPCIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_aSINTO_PREGUNTA">
+        <PropertyRef Name="CODIGOPREGUNTA" />
+      </Principal>
+      <Dependent Role="tbl_aSINTO_OPCIONES">
+        <PropertyRef Name="CODIGOPREGUNTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_aSINT__CODIG__03E74202">
+    <End Role="tbl_aSINTO_TIPOPREGUNTA" Type="Self.tbl_aSINTO_TIPOPREGUNTA" Multiplicity="0..1" />
+    <End Role="tbl_aSINTO_PREGUNTA" Type="Self.tbl_aSINTO_PREGUNTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_aSINTO_TIPOPREGUNTA">
+        <PropertyRef Name="CODIGOTIPOPREGUNTA" />
+      </Principal>
+      <Dependent Role="tbl_aSINTO_PREGUNTA">
+        <PropertyRef Name="CODIGOTIPOPREGUNTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="panelEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_aSINTO_GRUPOPREGUNTA" EntityType="Self.tbl_aSINTO_GRUPOPREGUNTA" />
+    <EntitySet Name="tbl_aSINTO_MENSAJES" EntityType="Self.tbl_aSINTO_MENSAJES" />
+    <EntitySet Name="tbl_aSINTO_OPCIONES" EntityType="Self.tbl_aSINTO_OPCIONES" />
+    <EntitySet Name="tbl_aSINTO_PREGUNTA" EntityType="Self.tbl_aSINTO_PREGUNTA" />
+    <EntitySet Name="tbl_aSINTO_PROCESO" EntityType="Self.tbl_aSINTO_PROCESO" />
+    <EntitySet Name="tbl_aSINTO_REGISTRO" EntityType="Self.tbl_aSINTO_REGISTRO" />
+    <EntitySet Name="tbl_aSINTO_REPORTE" EntityType="Self.tbl_aSINTO_REPORTE" />
+    <EntitySet Name="tbl_aSINTO_RESPUESTA" EntityType="Self.tbl_aSINTO_RESPUESTA" />
+    <EntitySet Name="tbl_aSINTO_TIPOPREGUNTA" EntityType="Self.tbl_aSINTO_TIPOPREGUNTA" />
+    <EntitySet Name="tbl_mSINTO_COLABORADOR" EntityType="Self.tbl_mSINTO_COLABORADOR" />
+    <EntitySet Name="tbl_mSINTO_FORMULARIO" EntityType="Self.tbl_mSINTO_FORMULARIO" />
+    <AssociationSet Name="FK__tbl_aSINT__CODIG__02F31DC9" Association="Self.FK__tbl_aSINT__CODIG__02F31DC9">
+      <End Role="tbl_aSINTO_GRUPOPREGUNTA" EntitySet="tbl_aSINTO_GRUPOPREGUNTA" />
+      <End Role="tbl_aSINTO_PREGUNTA" EntitySet="tbl_aSINTO_PREGUNTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_aSINT__CODIG__7E2E68AC" Association="Self.FK__tbl_aSINT__CODIG__7E2E68AC">
+      <End Role="tbl_mSINTO_FORMULARIO" EntitySet="tbl_mSINTO_FORMULARIO" />
+      <End Role="tbl_aSINTO_GRUPOPREGUNTA" EntitySet="tbl_aSINTO_GRUPOPREGUNTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_aSINT__CODIG__4476C863" Association="Self.FK__tbl_aSINT__CODIG__4476C863">
+      <End Role="tbl_aSINTO_MENSAJES" EntitySet="tbl_aSINTO_MENSAJES" />
+      <End Role="tbl_aSINTO_REGISTRO" EntitySet="tbl_aSINTO_REGISTRO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_aSINT__CODIG__18E25EE8" Association="Self.FK__tbl_aSINT__CODIG__18E25EE8">
+      <End Role="tbl_aSINTO_PREGUNTA" EntitySet="tbl_aSINTO_PREGUNTA" />
+      <End Role="tbl_aSINTO_OPCIONES" EntitySet="tbl_aSINTO_OPCIONES" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_aSINT__CODIG__03E74202" Association="Self.FK__tbl_aSINT__CODIG__03E74202">
+      <End Role="tbl_aSINTO_TIPOPREGUNTA" EntitySet="tbl_aSINTO_TIPOPREGUNTA" />
+      <End Role="tbl_aSINTO_PREGUNTA" EntitySet="tbl_aSINTO_PREGUNTA" />
+    </AssociationSet>
+    <FunctionImport Name="SP_PROCESAR_SINTOMATOLOGIA">
+      <Parameter Name="CODIGO" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_REPORTESINTO">
+      <Parameter Name="CODIGOREGISTRO" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="NPS_NUEVO_RESULTADO" EntityType="panelModel.NPS_NUEVO_RESULTADO" />
+    <EntitySet Name="NPS_NUEVO_RESULTADO_MATRIZ" EntityType="panelModel.NPS_NUEVO_RESULTADO_MATRIZ" />
+    <FunctionImport Name="SP_RegistrarNuevoNPS">
+      <Parameter Name="documento" Mode="In" Type="String" />
+      <Parameter Name="canal" Mode="In" Type="String" />
+      <Parameter Name="oficina" Mode="In" Type="String" />
+      <Parameter Name="VOTO" Mode="In" Type="Int32" />
+      <Parameter Name="comentario_VOTO" Mode="In" Type="String" />
+      <Parameter Name="COMENTARIO_PREG2" Mode="In" Type="String" />
+      <Parameter Name="COMENTARIO_PREG3" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="NPS_NUEVO_RESULTADO">
+    <Key>
+      <PropertyRef Name="IDRESULTADO" />
+    </Key>
+    <Property Name="IDRESULTADO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="documento" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="canal" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="oficina" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="VOTO" Type="Int32" />
+    <Property Name="comentario_VOTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="COMENTARIO_PREG2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="COMENTARIO_PREG3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="fecharesultado" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="NPS_NUEVO_RESULTADO_MATRIZ">
+    <Key>
+      <PropertyRef Name="IDRESULTADO" />
+      <PropertyRef Name="idpregunta" />
+    </Key>
+    <Property Name="IDRESULTADO" Type="Int32" Nullable="false" />
+    <Property Name="idpregunta" Type="Int32" Nullable="false" />
+    <Property Name="idtipo_respuesta" Type="Int32" />
+  </EntityType>
+</Schema>

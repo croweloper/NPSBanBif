@@ -1,0 +1,384 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BanBif | Credito</title>
+    <link rel="SHORTCUT ICON" href="https://banbif.com.pe/Portals/0/favicon.ico?ver=2016-12-06-153739-663" />
+    <script src="~/Library/js/jquery-2.1.3-jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+        var dni = localStorage.dnilogin;
+        var controlador = localStorage.nuevoControlador;
+        var oficina = localStorage.codoficina;
+         var APPurl = "@ViewBag.APPURL";
+         var canal = controlador;
+         console.log(canal);
+
+        function CargarPagina() {
+            var flag = document.getElementById("hidLoad").value;
+            var rate = document.getElementById("hidRating").value;
+            var available = document.getElementById("hidAvailable").value;
+            var mensaje = document.getElementById("hidMensaje").value;
+
+            localStorage.setItem('MensajePoll', mensaje);
+
+            if (flag == "0") {
+                window.location.href = APPurl + "/Gracias/Index";
+            }
+
+            if (available == "2" || available == "3") {
+                window.location.href = APPurl + "/Gracias/Index";
+            }
+
+            document.getElementById("divPregunta").innerHTML = "1. " + "Según su reciente experiencia al obtener una tarjeta de crédito con BanBif, en una escala del 0 al 10, ¿Qué tan probable es que recomiende el producto a familiares y amigos?";
+
+            Rating(rate);
+
+
+
+            /*MATRIZ*/
+            var pregunta2 = "2. ";
+
+            pregunta2 += "Por favor, califique ¿Qué tan satisfecho se encuentra con relación a …?";
+
+            $('#divPregunta2').html(pregunta2);
+
+        }
+        function Rating(rate) {
+            for (i = 0; i <= 10; i++) {
+                document.getElementById("arrow" + i).style.visibility = "hidden";
+                if (rate == i) {
+                    document.getElementById("arrow" + i).style.visibility = "visible";
+                    document.getElementById("hidRating").value = rate;
+                }
+            }
+
+
+            if (rate <= 10) {
+                document.getElementById("pPreguntaComentario").innerHTML = "¿Qué es lo que más le gusta de BANBIF?";
+            }
+            if (rate <= 8) {
+                document.getElementById("pPreguntaComentario").innerHTML = "¿Qué nos faltaría para mejorar?";
+            }
+            if (rate <= 6) {
+                document.getElementById("pPreguntaComentario").innerHTML = "¿Por qué motivo nos brinda esa calificación?";
+            }
+
+        }
+        function RegistrarVoto() {
+            var rate = document.getElementById("hidRating").value;
+            var comentario = document.getElementById("comments").value;
+            var idUsuario = dni;
+
+            if (comentario == "") {
+                alert("Por favor escribir un comentario.");
+                return false;
+            }
+
+            var oBE = {};
+            oBE.id = idUsuario;
+            oBE.result = rate;
+            oBE.comments = comentario;
+            oBE.token = "";
+
+
+
+            var Opciones = [];
+            Opciones.push({ "CodigoOpcion": 1 });
+            Opciones.push({ "CodigoOpcion": 2 });
+            Opciones.push({ "CodigoOpcion": 3 });
+            Opciones.push({ "CodigoOpcion": 4 });
+            Opciones.push({ "CodigoOpcion": 5 });
+
+            var Preguntas = [];
+
+            Preguntas.push({ "CodigoPregunta": 32 });
+            Preguntas.push({ "CodigoPregunta": 33 });
+            Preguntas.push({ "CodigoPregunta": 34 });
+            Preguntas.push({ "CodigoPregunta": 35 });
+            Preguntas.push({ "CodigoPregunta": 36 });
+
+
+
+            var objRequest = {};
+            objRequest.ID = idUsuario;
+            // var coment3 = $('#txtPregunta3').val();
+
+            //objRequest.Respuesta3 = coment3;
+
+            var Respuestas2 = [];
+
+            $.each(Preguntas, function (index, pregunta) {
+                var codPregunta = pregunta.CodigoPregunta;
+                $.each(Opciones, function (index, opcion) {
+                    var codOpcion = opcion.CodigoOpcion;
+                    if ($('#preg_' + codPregunta + '_' + codOpcion).prop("checked")) {
+                        Respuestas2.push({
+                            "IdPregunta": codPregunta,
+                            "IdRespuesta": codOpcion
+                        });
+                    }
+                });
+            });
+
+            objRequest.Respuestas2 = Respuestas2;
+
+            if (objRequest.Respuestas2.length < 5) {
+                alert("Por favor marque todas las opciones.");
+                return false;
+            }
+            $.ajax({
+                url: APPurl + '/voto',
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                processData: true,
+                data: JSON.stringify(oBE),
+                success: function (response) {
+                    if (response.result) {
+
+                        $.ajax({
+                            url: APPurl + '/SaveDigital',
+                            type: "POST",
+                            dataType: "json",
+                            contentType: "application/json; charset=utf-8",
+                            processData: true,
+                            data: JSON.stringify(objRequest),
+                            success: function (responseDigital) {
+                                // if (responseDigital.result) {
+                                var mensaje = response.mensaje;
+                                localStorage.setItem('MensajePoll', mensaje);
+                                window.location.href = APPurl + "/Gracias/Index";
+                                //}
+                            }
+                        });
+
+
+                    }
+                }
+            });
+        }
+    </script>
+
+
+    <style>
+        .tableDigital {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            .tableDigital td, .tableDigital th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            .tableDigital tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            .tableDigital tr:hover {
+                background-color: #ddd;
+            }
+
+            .tableDigital th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #4CAF50;
+                color: white;
+            }
+    </style>
+
+</head>
+<body onload="CargarPagina()" style="background-image: url('/Library/img/banbif/fondo.png'); margin: 0px; background-repeat: no-repeat; background-position-x: center" >
+    <input type="hidden" id="hidLoad" value="@ViewBag.CargarPagina" />
+    <input type="hidden" id="hidAvailable" value="@ViewBag.Available" />
+    <input type="hidden" id="hidMensaje" value="@ViewBag.Mensaje" />
+    <input type="hidden" id="hidIdUsuario" value="@ViewBag.IdUsuario" />
+    <div style="width:100%">
+
+        <div align="center">
+            <div style="width: 700px; background-image: url('/Library/img/banbif/fondo_white.png'); background-repeat: repeat; margin: 10px; padding: 30px; border: 2px solid #fff; text-align: left; font-family: Verdana,Arial">
+                <div style="font-size:26px; color:#20a6ff; font-weight: 700">HOLA</div>
+                <br />
+                <div id="divPregunta" align="justify" style="font-size:14px; color:#20a6ff; font-weight: 700">
+
+                </div>
+                <br />
+                <div align="center">
+                    <table bgcolor="#fff" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td align="center" bgcolor="#FF7068" colspan="7" height="30" style="font-size:11px; color:#fff">No lo recomendaría en absoluto</td>
+                                <td align="center" bgcolor="#ffb837" colspan="2" style="font-size:11px; color:#fff">No sé</td>
+                                <td align="center" bgcolor="#00c371" colspan="2" style="font-size:11px; color:#fff">Sí lo <br /> recomendaría</td>
+                            </tr>
+                            <tr>
+                                <td align="center"><a onclick="Rating(0)"><img src="~/Library/img/banbif/triste.jpg" /></a></td>
+                                <td align="center"><a onclick="Rating(1)"><img src="~/Library/img/banbif/triste.jpg" /></a></td>
+                                <td align="center"><a onclick="Rating(2)"><img src="~/Library/img/banbif/triste.jpg" /></a></td>
+                                <td align="center"><a onclick="Rating(3)"><img src="~/Library/img/banbif/triste.jpg" /></a></td>
+                                <td align="center"><a onclick="Rating(4)"><img src="~/Library/img/banbif/triste.jpg" /></a></td>
+                                <td align="center"><a onclick="Rating(5)"><img src="~/Library/img/banbif/triste.jpg" /></a></td>
+                                <td align="center"><a onclick="Rating(6)"><img src="~/Library/img/banbif/triste.jpg" /></a></td>
+                                <td align="center"><a onclick="Rating(7)"><img src="~/Library/img/banbif/serio.jpg" /></a></td>
+                                <td align="center"><a onclick="Rating(8)"><img src="~/Library/img/banbif/serio.jpg" /></a></td>
+                                <td align="center"><a onclick="Rating(9)"><img src="~/Library/img/banbif/feliz.jpg" /></a></td>
+                                <td align="center"><a onclick="Rating(10)"><img src="~/Library/img/banbif/feliz.jpg" /></a></td>
+                            </tr>
+                            <tr>
+                                <td align="center" style="color:#ff7068"><a href="#" onclick="Rating(0)" style="color:#ff7068; text-decoration:none"><b>0</b></a></td>
+                                <td align="center" style="color:#ff7068"><a href="#" onclick="Rating(1)" style="color:#ff7068; text-decoration:none"><b>1</b></a></td>
+                                <td align="center" style="color:#ff7068"><a href="#" onclick="Rating(2)" style="color:#ff7068; text-decoration:none"><b>2</b></a></td>
+                                <td align="center" style="color:#ff7068"><a href="#" onclick="Rating(3)" style="color:#ff7068; text-decoration:none"><b>3</b></a></td>
+                                <td align="center" style="color:#ff7068"><a href="#" onclick="Rating(4)" style="color:#ff7068; text-decoration:none"><b>4</b></a></td>
+                                <td align="center" style="color:#ff7068"><a href="#" onclick="Rating(5)" style="color:#ff7068; text-decoration:none"><b>5</b></a></td>
+                                <td align="center" style="color:#ff7068"><a href="#" onclick="Rating(6)" style="color:#ff7068; text-decoration:none"><b>6</b></a></td>
+                                <td align="center" style="color:#ffb837"><a href="#" onclick="Rating(7)" style="color:#ffb837; text-decoration:none"><b>7</b></a></td>
+                                <td align="center" style="color:#ffb837"><a href="#" onclick="Rating(8)" style="color:#ffb837; text-decoration:none"><b>8</b></a></td>
+                                <td align="center" style="color:#00c371"><a href="#" onclick="Rating(9)" style="color:#00c371; text-decoration:none"><b>9</b></a></td>
+                                <td align="center" style="color:#00c371"><a href="#" onclick="Rating(10)" style="color:#00c371; text-decoration:none"><b>10</b></a></td>
+                            </tr>
+                            <tr>
+                                <td align="center" height="30">
+                                    <div id="arrow0" style="visibility:visible"><img src="~/Library/img/banbif/arrow3.png" /></div>
+                                </td>
+                                <td align="center" height="30">
+                                    <div id="arrow1" style="visibility:hidden"><img src="~/Library/img/banbif/arrow3.png" /></div>
+                                </td>
+                                <td align="center" height="30">
+                                    <div id="arrow2" style="visibility:hidden"><img src="~/Library/img/banbif/arrow3.png" /></div>
+                                </td>
+                                <td align="center" height="30">
+                                    <div id="arrow3" style="visibility:hidden"><img src="~/Library/img/banbif/arrow3.png" /></div>
+                                </td>
+                                <td align="center" height="30">
+                                    <div id="arrow4" style="visibility:hidden"><img src="~/Library/img/banbif/arrow3.png" /></div>
+                                </td>
+                                <td align="center" height="30">
+                                    <div id="arrow5" style="visibility:hidden"><img src="~/Library/img/banbif/arrow3.png" /></div>
+                                </td>
+                                <td align="center" height="30">
+                                    <div id="arrow6" style="visibility:hidden"><img src="~/Library/img/banbif/arrow3.png" /></div>
+                                </td>
+                                <td align="center" height="30">
+                                    <div id="arrow7" style="visibility:hidden"><img src="~/Library/img/banbif/arrow2.png" /></div>
+                                </td>
+                                <td align="center" height="30">
+                                    <div id="arrow8" style="visibility:hidden"><img src="~/Library/img/banbif/arrow2.png" /></div>
+                                </td>
+                                <td align="center" height="30">
+                                    <div id="arrow9" style="visibility:hidden"><img src="~/Library/img/banbif/arrow1.png" /></div>
+                                </td>
+                                <td align="center" height="30">
+                                    <div id="arrow10" style="visibility:hidden"><img src="~/Library/img/banbif/arrow1.png" /></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div align="center">
+                    <input type="hidden" id="hidRating" name="hidRating" value="@ViewBag.Rating" />
+                    <div align="center" style="width:100%; font-size:12px; margin:7px" id="divPreguntaComentario">
+                        <p id="pPreguntaComentario"></p>
+                    </div>
+                    <textarea id="comments" name="comments" required rows="4" style="width:90%"></textarea>
+                </div>
+                <br />
+                <div id="divPregunta2" align="justify" style="font-size:14px; color:#20a6ff; font-weight: 700">
+
+                </div>
+                <br />
+
+                <div id="divCanalOficina" style="display:block">
+                    <table style="width:700px; font-size:12px" class="tableDigital">
+                        <thead>
+                            <tr>
+                                <th width="5%"></th>
+                                <th width="35%">Atributos</th>
+                                <th width="10%" style="text-align:center">Nada Satisfecho</th>
+                                <th width="10%" style="text-align:center">Poco Satisfecho</th>
+                                <th width="10%" style="text-align:center">Satisfecho</th>
+                                <th width="10%" style="text-align:center">Muy Satisfecho</th>
+                                <th width="10%" style="text-align:center">Totalmente Satisfecho</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>P2.1</td>
+                                <td>El tipo de tarjeta de crédito (gama/categoría)</td>
+                                <td align="center"><input type="radio" id="preg_32_1" name="chekP32" /></td>
+                                <td align="center"><input type="radio" id="preg_32_2" name="chekP32" /></td>
+                                <td align="center"><input type="radio" id="preg_32_3" name="chekP32" /></td>
+                                <td align="center"><input type="radio" id="preg_32_4" name="chekP32" /></td>
+                                <td align="center"><input type="radio" id="preg_32_5" name="chekP32" /></td>
+                            </tr>
+                            <tr>
+                                <td>P2.2</td>
+                                <td>Los diseños de la tarjeta</td>
+                                <td align="center"><input type="radio" id="preg_33_1" name="chekP33" /></td>
+                                <td align="center"><input type="radio" id="preg_33_2" name="chekP33" /></td>
+                                <td align="center"><input type="radio" id="preg_33_3" name="chekP33" /></td>
+                                <td align="center"><input type="radio" id="preg_33_4" name="chekP33" /></td>
+                                <td align="center"><input type="radio" id="preg_33_5" name="chekP33" /></td>
+                            </tr>
+                            <tr>
+                                <td>P2.3</td>
+                                <td>
+                                    El monto de la línea de crédito otorgada
+                                </td>
+                                <td align="center"><input type="radio" id="preg_34_1" name="chekP34" /></td>
+                                <td align="center"><input type="radio" id="preg_34_2" name="chekP34" /></td>
+                                <td align="center"><input type="radio" id="preg_34_3" name="chekP34" /></td>
+                                <td align="center"><input type="radio" id="preg_34_4" name="chekP34" /></td>
+                                <td align="center"><input type="radio" id="preg_34_5" name="chekP34" /></td>
+                            </tr>
+                            <tr>
+                                <td>P2.4</td>
+                                <td>
+                                    Los beneficios del Programa de Recompensas (Puntos o Millas)
+                                </td>
+                                <td align="center"><input type="radio" id="preg_35_1" name="chekP35" /></td>
+                                <td align="center"><input type="radio" id="preg_35_2" name="chekP35" /></td>
+                                <td align="center"><input type="radio" id="preg_35_3" name="chekP35" /></td>
+                                <td align="center"><input type="radio" id="preg_35_4" name="chekP35" /></td>
+                                <td align="center"><input type="radio" id="preg_35_5" name="chekP35" /></td>
+                            </tr>
+                            <tr>
+                                <td>P2.5</td>
+                                <td>
+                                    La cantidad de promociones y descuentos en diversas tiendas comerciales
+                                </td>
+                                <td align="center"><input type="radio" id="preg_36_1" name="chekP36" /></td>
+                                <td align="center"><input type="radio" id="preg_36_2" name="chekP36" /></td>
+                                <td align="center"><input type="radio" id="preg_36_3" name="chekP36" /></td>
+                                <td align="center"><input type="radio" id="preg_36_4" name="chekP36" /></td>
+                                <td align="center"><input type="radio" id="preg_36_5" name="chekP36" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br />
+                <div align="center">
+                    <input type="button" onclick="RegistrarVoto()" value="Enviar" />
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <br />
+    <div align="center" style="font-family: Verdana,Arial; font-size: 9px; margin: 0px; padding-top: 7px; padding-bottom: 7px; width: 100%; border-width: 1px; border-top: 1px solid #ccc; border-color: #ccc">
+        Encuesta desarrollada para <img height="10" src="~/Library/img/banbif/logo_blue.png" />
+    </div>
+</body>
+</html>

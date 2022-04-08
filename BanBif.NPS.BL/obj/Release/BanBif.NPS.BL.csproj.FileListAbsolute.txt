@@ -1,0 +1,12 @@
+C:\Personal\Banbif\Innovacion\BanBif.NPS\BanBif.NPS.BL\bin\Release\BanBif.NPS.BL.dll
+C:\Personal\Banbif\Innovacion\BanBif.NPS\BanBif.NPS.BL\bin\Release\BanBif.NPS.BL.pdb
+C:\Personal\Banbif\Innovacion\BanBif.NPS\BanBif.NPS.BL\bin\Release\BanBif.NPS.BE.dll
+C:\Personal\Banbif\Innovacion\BanBif.NPS\BanBif.NPS.BL\bin\Release\Newtonsoft.Json.dll
+C:\Personal\Banbif\Innovacion\BanBif.NPS\BanBif.NPS.BL\bin\Release\BanBif.NPS.BE.pdb
+C:\Personal\Banbif\Innovacion\BanBif.NPS\BanBif.NPS.BL\bin\Release\Newtonsoft.Json.pdb
+C:\Personal\Banbif\Innovacion\BanBif.NPS\BanBif.NPS.BL\bin\Release\Newtonsoft.Json.xml
+C:\Personal\Banbif\Innovacion\BanBif.NPS\BanBif.NPS.BL\obj\Release\BanBif.NPS.BL.csproj.AssemblyReference.cache
+C:\Personal\Banbif\Innovacion\BanBif.NPS\BanBif.NPS.BL\obj\Release\BanBif.NPS.BL.csproj.CoreCompileInputs.cache
+C:\Personal\Banbif\Innovacion\BanBif.NPS\BanBif.NPS.BL\obj\Release\BanBif.NPS.BL.csproj.CopyComplete
+C:\Personal\Banbif\Innovacion\BanBif.NPS\BanBif.NPS.BL\obj\Release\BanBif.NPS.BL.dll
+C:\Personal\Banbif\Innovacion\BanBif.NPS\BanBif.NPS.BL\obj\Release\BanBif.NPS.BL.pdb

@@ -1,0 +1,32 @@
+@media (min-width: 1024px) {
+    .pantalla1 {
+        height: 100vh;
+        padding: 0;
+    }
+    .agendador__columnas {
+        display: flex;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .agendador__columna1 {
+        display: block;
+        text-align: left;
+        margin-bottom: 0;
+    }
+    .agendador__titulo {
+        font-size: 35px;
+    }
+    .subtitulo {
+        font-size: 20px;
+    }
+    .agendador__imagen {
+        display: block;
+    }
+    .agendador__columna2 {
+        padding: 40px;
+        border-radius: 15px;
+    }
+    .agendador__check input {
+        width: 24px !important;
+    }
+}

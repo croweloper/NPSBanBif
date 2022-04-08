@@ -1,0 +1,741 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #20a6ff;
+}
+
+
+@font-face {
+  font-family: 'HelveticaRounded LT Std Bd';
+  src: url(/fonts/HelveticaRoundedLTStd-Bd.woff);
+}
+
+@font-face {
+  font-family: 'HelveticaNeueLT Std';
+  src: url(/fonts/HelveticaNeueLTStd-Md.woff);
+}
+
+
+.centrado2 {
+  max-width: 1150px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 0px;
+}
+
+p {
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus {
+  outline: none;
+}
+
+img {
+  height: auto;
+}
+
+.bg-cyangrad {
+  background: linear-gradient(45deg, #0a8dff 0%, #20a6ff 51%, #40b6ff 99%, #40b6ff 100%);
+}
+
+.bg-cyan {
+  background-color: #20a6ff;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-celeste {
+  background-color: #f3faff;
+}
+
+.bg-morado {
+  background-color: #ad96dc;
+}
+
+.bg-gris {
+  background-color: #f7f7f7;
+}
+
+.font-open {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.font-helvetica {
+  font-family: "HelveticaRounded LT Std Bd", sans-serif;
+}
+
+.font-helve {
+  font-family: "HelveticaNeueLT Std", sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.text-gris {
+  color: #868686;
+}
+
+.text-cyan {
+  color: #20a6ff;
+}
+
+.text-white {
+  color: white;
+}
+
+.text-sm {
+  font-size: 14px;
+}
+
+.text-md {
+  font-size: 16px;
+}
+
+.text-lg {
+  font-size: 22px;
+}
+
+.text-xl {
+  font-size: 26px;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.font-light {
+  font-weight: 400;
+}
+
+.list {
+  list-style: none;
+}
+
+.list::before {
+  content: '●';
+  color: #20a6ff;
+  margin-right: 10px;
+}
+
+.leading-normal {
+  line-height: 1.8em;
+}
+
+.shadow-md {
+  -webkit-box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
+          box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.4);
+}
+
+.my-10 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.my-5 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.mt-50 {
+  margin-top: 50px;
+}
+
+.py-50 {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.py-100 {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.pt-80 {
+  padding-top: 80px;
+}
+
+.pb-80 {
+  padding-bottom: 80px;
+}
+
+.px-20 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 1024px) {
+  .px-20 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* ================================== */
+.text-hola {
+  width: auto;
+  height: 50px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: all ease-in 150ms;
+  transition: all ease-in 150ms;
+}
+
+.invisible {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all ease-out 150ms;
+  transition: all ease-out 150ms;
+}
+
+/* ======================================== */
+.pantalla1 {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.agendador__columnas {
+  display: block;
+}
+
+.agendador__columna1 {
+  padding-top: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.agendador__imagen {
+  display: none;
+}
+
+.agendador__logo {
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 150px;
+}
+
+.agendador__imagen {
+  margin-top: 25px;
+}
+
+.agendador__columna2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: auto;
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+  border-radius: 15px;
+  padding: 40px 20px;
+  position: relative;
+}
+
+small {
+  color: #868686;
+  display: block;
+}
+
+.agendador__titulo {
+  font-family: "HelveticaRounded LT Std Bd", sans-serif;
+  font-size: 28px;
+}
+
+.agendador__tituloForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 400;
+}
+
+.agendador__tituloForm img {
+  margin-right: 10px;
+}
+
+.agendador__tituloForm p {
+  margin: 0;
+  font-weight: bold;
+  color: #20a6ff;
+  font-size: 16px;
+}
+
+.agendador__input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.agendador__input input {
+  width: 100%;
+  padding: 9px 24px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.agendador__input input:focus {
+  outline: none;
+}
+
+.agendador__etiqueta {
+  font-size: 14px;
+}
+
+.box-label {
+  height: 55px;
+  position: relative;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.box-label label {
+  position: absolute;
+  pointer-events: none;
+  left: 14px;
+  margin: 0;
+  bottom: 11px;
+  z-index: 1;
+  font-weight: 400;
+  font-size: 14px;
+  color: #868686;
+  -webkit-transition: ease all;
+  transition: ease all;
+  background-color: white;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+  padding: 0 10px;
+}
+
+.box-label input {
+  position: absolute;
+  bottom: 0;
+  -webkit-transition: ease all;
+  transition: ease all;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+  color: #868686;
+}
+
+.box-label input:focus + label {
+  bottom: 32px;
+  left: 14px;
+  color: #20a6ff;
+  -webkit-transition: ease all;
+  transition: ease all;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+
+.box-label input:not(:placeholder-shown) + label {
+  bottom: 32px;
+  left: 14px;
+  color: #20a6ff;
+}
+
+.box-label input:not(:placeholder-shown) + .etiqueta-estatica {
+  bottom: 45px;
+  left: 14px;
+  color: #20a6ff;
+}
+
+.label-estatico {
+  position: relative;
+  margin-top: 20px;
+}
+
+.label-estatico label {
+  position: absolute;
+  top: -10px;
+  left: 14px;
+  background-color: white;
+  padding: 0 10px;
+  color: #20a6ff;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.selectHora {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  margin-top: 15px;
+}
+
+.selectHora label {
+  position: static;
+  padding: 0 !important;
+}
+
+select {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: white;
+  padding: 10px;
+  color: #20a6ff;
+  font-size: 14px;
+  font-weight: 400;
+  border: none;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  position: relative;
+}
+
+.selectHora::after {
+  content: '';
+  pointer-events: none;
+  width: 18px;
+  height: 18px;
+  background-image: url(https://uatpub.banbif.com.pe/Portals/0/Landings/iconos/sort-down-solid.png);
+  background-size: cover;
+  position: absolute;
+  z-index: 2;
+  right: 14px;
+  bottom: 10px;
+}
+
+.label-estatico input {
+  position: relative;
+  color: #868686;
+}
+
+.label-textarea {
+  position: relative;
+  padding-top: 25px;
+}
+
+.label-textarea textarea {
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  width: 100%;
+  padding: 13px 24px;
+  resize: none;
+}
+
+.label-textarea textarea:focus {
+  outline: none !important;
+}
+
+.label-textarea:after {
+  content: '¿Cuál es tu consulta?';
+  position: absolute;
+  top: 15px;
+  left: 14px;
+  color: #20a6ff;
+  z-index: 2;
+  background-color: white;
+  padding: 0 10px;
+}
+
+.agendador__fecha,
+.agendador__hora {
+  padding: 3px 24px !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position-x: calc(100% - 20px);
+}
+
+.agendador__fecha {
+  background-image: url(https://www.banbif.com.pe/Portals/0/Images/agendador/calendario-input.png);
+}
+
+.agendador__hora {
+  background-image: url(https://www.banbif.com.pe/Portals/0/Images/agendador/reloj-de-pared.png);
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+  background: none;
+}
+
+input[type='time']::-webkit-calendar-picker-indicator {
+  background: none;
+}
+
+.datetime-reset-button {
+  color: transparent;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.agendador__check {
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.agendador__check input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  display: none;
+}
+
+.check__square {
+  background-color: white;
+  background-image: url(https://www.banbif.com.pe/Portals/0/Images/agendador/check-blue.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0;
+  border: 1px solid #20a6ff;
+  width: 30px;
+  height: 20px;
+  display: block;
+  border-radius: 5px;
+  margin: 0 10px 0 0 !important;
+  -webkit-transition: all 50ms ease;
+  transition: all 50ms ease;
+}
+
+.agendador__check input:checked ~ .check__square {
+  background-size: 80%;
+}
+
+.agendador__check input:focus ~ .check__square {
+  outline: none !important;
+}
+
+.agendador__check label a {
+  margin: 0;
+  color: #20a6ff;
+  font-weight: 400;
+  font-size: 14px;
+  -webkit-transition: color 150ms ease;
+  transition: color 150ms ease;
+}
+
+.agendador__check label a:hover {
+  color: #20a6ff;
+  text-decoration: none;
+}
+
+.agendador__continuar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 20px;
+}
+
+.agendador__continuar button {
+  padding: 10px 24px;
+  border: 1px solid #20a6ff;
+  background-color: #20a6ff;
+  color: white;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.agendador__continuar button:focus {
+  outline: none !important;
+}
+
+.agendador__medios {
+  margin-top: 15px;
+}
+
+.agendador__medios p {
+  color: #20a6ff;
+  font-size: 14px;
+}
+
+.agendador__opciones {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.agendador__opciones input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 80px;
+  height: 105px;
+  -webkit-transition: all 150ms ease;
+  transition: all 150ms ease;
+  color: #868686;
+  cursor: pointer;
+  margin: 0 !important;
+}
+
+.agendador__opciones input:before {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  height: 100%;
+  padding-bottom: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  background-repeat: no-repeat;
+  background-size: 90%;
+  background-position: center;
+  background-position-y: 15px;
+}
+
+.agendador__opciones input:checked {
+  outline: none !important;
+  border: 1px solid #20a6ff;
+  -webkit-box-shadow: inset 0 0 2px #20a6ff;
+          box-shadow: inset 0 0 2px #20a6ff;
+  color: #20a6ff;
+  font-weight: 400;
+}
+
+.agendador__opciones #whatsapp:before {
+  background-image: url(https://www.banbif.com.pe/Portals/0/Images/agendador/whatsapp.png);
+  content: 'Whatsapp';
+}
+
+.agendador__opciones #teams:before {
+  background-image: url(https://www.banbif.com.pe/Portals/0/Images/agendador/microsoft-teams.png);
+  content: 'Teams';
+}
+
+.agendador__opciones #zoom:before {
+  background-image: url(../img/zoom.png);
+  content: 'Zoom';
+}
+
+.agendador__opciones #llamada:before {
+  background-image: url(https://www.banbif.com.pe/Portals/0/Images/agendador/celular.svg);
+  content: 'Llamada';
+}
+
+.agendador__success {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.agendador__success img {
+  margin: 15px auto;
+}
+
+.agendador__successTitulo {
+  font-size: 16px;
+  color: #20a6ff;
+  font-weight: 600;
+}
+
+.agendador__textGracias p {
+  color: #868686;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.agendador__datos p {
+  color: #868686;
+  font-size: 14px;
+}
+
+.agendador__detalle {
+  list-style: none;
+  padding: 5px 0;
+  font-size: 14px;
+  color: #868686;
+}
+
+select:focus-visible {
+  outline: none;
+}
+
+.agendador__detalle span {
+  font-weight: 600;
+}
+
+.subtitulo {
+  font-size: 16px;
+}
+
+.agendador__check label {
+  color: #868686;
+  font-weight: 400;
+}
+
+#provincia::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+#provincia {
+  cursor: default;
+}
+/*# sourceMappingURL=agendador.css.map */

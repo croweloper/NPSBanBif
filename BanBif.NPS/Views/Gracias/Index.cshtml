@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BanBif | GRACIAS</title>
+    <link rel="SHORTCUT ICON" href="https://banbif.com.pe/Portals/0/favicon.ico?ver=2016-12-06-153739-663" />
+    <script type="text/javascript">
+        function CargarPagina() {
+            var mensaje = localStorage.MensajePoll;
+            document.getElementById("divMensaje").innerHTML = mensaje;
+        }
+    </script>
+</head>
+<body onload="CargarPagina()" style="background-image: url('/Library/img/banbif/fondo.png'); background-repeat:no-repeat; background-position-x:center">
+    <div style="width:100%">
+        <div align="center">
+            <div style="width:500px; background-image: url('/Library/img/banbif/fondo_white.png');background-repeat:repeat; margin:10px;padding:30px; border: 2px solid #fff;text-align:left; font-family:Verdana,Arial">
+                <div style="font-size:24px; color:#20a6ff; font-weight: 700">GRACIAS</div>
+                <br />
+                <div id="divMensaje" align="center" style="font-size:12px; font-weight: bold; text-align:justify">
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <div align="center" style="font-family: Verdana,Arial; font-size: 9px; margin: 7px; padding-top: 7px; padding-bottom: 7px; width: 100%; border-width: 1px; border-top: 1px solid #ccc; border-color: #ccc">
+        Encuesta desarrollada para <img height="10" src="/Library/img/banbif/logo_blue.png" />
+    </div>
+</body>
+</html>
