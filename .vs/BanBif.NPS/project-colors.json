@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "42b8748e-cfc4-4aed-8947-8ae991193afe": {
+      "ProjectGuid": "42b8748e-cfc4-4aed-8947-8ae991193afe",
+      "DisplayName": "BanBif.Sintomatologia.DA",
+      "ColorIndex": 0
+    },
+    "753d854f-3c67-43bc-9d84-078ad0eb187a": {
+      "ProjectGuid": "753d854f-3c67-43bc-9d84-078ad0eb187a",
+      "DisplayName": "BanBif.NPS",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Archivos varios",
+      "ColorIndex": -1
+    },
+    "6d54954c-26ea-4bf0-a5c0-9e41e3a17ed4": {
+      "ProjectGuid": "6d54954c-26ea-4bf0-a5c0-9e41e3a17ed4",
+      "DisplayName": "NPSNuevo",
+      "ColorIndex": 2
+    },
+    "da8a104a-5ce1-4182-9775-444a27e5c19f": {
+      "ProjectGuid": "da8a104a-5ce1-4182-9775-444a27e5c19f",
+      "DisplayName": "BanBif.NPS.BE",
+      "ColorIndex": 3
+    },
+    "7911090e-169e-4451-bb44-134ca07dedc1": {
+      "ProjectGuid": "7911090e-169e-4451-bb44-134ca07dedc1",
+      "DisplayName": "BanBif.NPS.BL",
+      "ColorIndex": 4
+    }
+  },
+  "NextColorIndex": 5
+}

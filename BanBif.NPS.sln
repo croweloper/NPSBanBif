@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BanBif.NPS.BE", "BanBif.NPS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BanBif.NPS.BL", "BanBif.NPS.BL\BanBif.NPS.BL.csproj", "{7911090E-169E-4451-BB44-134CA07DEDC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NPSNuevo", "NPSNuevo\NPSNuevo.csproj", "{6D54954C-26EA-4BF0-A5C0-9E41E3A17ED4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{7911090E-169E-4451-BB44-134CA07DEDC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7911090E-169E-4451-BB44-134CA07DEDC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7911090E-169E-4451-BB44-134CA07DEDC1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6D54954C-26EA-4BF0-A5C0-9E41E3A17ED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6D54954C-26EA-4BF0-A5C0-9E41E3A17ED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6D54954C-26EA-4BF0-A5C0-9E41E3A17ED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6D54954C-26EA-4BF0-A5C0-9E41E3A17ED4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

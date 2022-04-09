@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="panelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="NPS_NUEVO_RESULTADO">
+    <Key>
+      <PropertyRef Name="IDRESULTADO" />
+    </Key>
+    <Property Name="IDRESULTADO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="documento" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="canal" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="oficina" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="VOTO" Type="Int32" />
+    <Property Name="comentario_VOTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="COMENTARIO_PREG2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="COMENTARIO_PREG3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="fecharesultado" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="NPS_NUEVO_RESULTADO_MATRIZ">
+    <Key>
+      <PropertyRef Name="IDRESULTADO" />
+      <PropertyRef Name="idpregunta" />
+    </Key>
+    <Property Name="IDRESULTADO" Type="Int32" Nullable="false" />
+    <Property Name="idpregunta" Type="Int32" Nullable="false" />
+    <Property Name="idtipo_respuesta" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="panelEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="NPS_NUEVO_RESULTADO" EntityType="Self.NPS_NUEVO_RESULTADO" />
+    <EntitySet Name="NPS_NUEVO_RESULTADO_MATRIZ" EntityType="Self.NPS_NUEVO_RESULTADO_MATRIZ" />
+    <FunctionImport Name="SP_RegistrarNuevoNPS">
+      <Parameter Name="documento" Mode="In" Type="String" />
+      <Parameter Name="canal" Mode="In" Type="String" />
+      <Parameter Name="oficina" Mode="In" Type="String" />
+      <Parameter Name="VOTO" Mode="In" Type="Int32" />
+      <Parameter Name="comentario_VOTO" Mode="In" Type="String" />
+      <Parameter Name="COMENTARIO_PREG2" Mode="In" Type="String" />
+      <Parameter Name="COMENTARIO_PREG3" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

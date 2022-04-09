@@ -174,13 +174,13 @@
             oBE.comments = comentario;
             oBE.token = "";
 
-            //oBE.documento = idUsuario;
-            //oBE.canal = controlador;
-            //oBE.oficina = oficina;
-            //oBE.VOTO = rate
-            //oBE.comentario_VOTO = comentario
-            //oBE.COMENTARIO_PREG2 = ""
-            //oBE.COMENTARIO_PREG3 = result3 + "|" + " " + coment3;
+            oBE.documento = idUsuario;
+            oBE.canal = controlador;
+            oBE.oficina = oficina;
+            oBE.VOTO = rate
+            oBE.comentario_VOTO = comentario
+            oBE.COMENTARIO_PREG2 = ""
+            oBE.COMENTARIO_PREG3 = result3 + "|" + " " + coment3;
 
             objRequest.Respuestas2 = Respuestas2;
 
@@ -221,6 +221,25 @@
             //    }
             //});
 
+            $.ajax({
+                url: '/voto/RegistrarVoto',
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                processData: true,
+                data: JSON.stringify(oBE),
+                success: function (response) {
+                    console.log("todo gud");
+                    alert("todo gud");
+
+                    if (response.result) {
+
+                    }
+                }
+            });
+
+
+
 
             $.ajax({
                 url: '/voto',
@@ -243,7 +262,7 @@
                                 if (responseDigital.result) {
                                     var mensaje = response.mensaje;
                                     localStorage.setItem('MensajePoll', mensaje);
-                                    window.location.href = APPurl + "/Gracias/Index";
+                                    //window.location.href = APPurl + "/Gracias/Index";
                                 }
                             }
                         });
