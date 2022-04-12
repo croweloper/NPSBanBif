@@ -17,8 +17,10 @@
         var APPurl = "@ViewBag.APPURL";
 
         var dni = localStorage.dnilogin;
+        var documento = localStorage.dnilogin;
         var controlador = localStorage.nuevoControlador;
         var oficina = localStorage.codoficina;
+        var usu = document.getElementById("hidIdUsuario").value;
 
         function CargarPagina() {
             var flag = document.getElementById("hidLoad").value
@@ -76,6 +78,15 @@
             oBE.result = rate;
             oBE.comments = comentario;
             oBE.token = "";
+
+
+            oBE.documento = idUsuario;
+            oBE.canal = controlador;
+            oBE.oficina = oficina;
+            oBE.VOTO = rate
+            oBE.comentario_VOTO = comentario
+            oBE.COMENTARIO_PREG2 = ""
+            oBE.COMENTARIO_PREG3 = ""
 
             $.ajax({
                 url: '/voto',

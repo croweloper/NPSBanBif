@@ -26,5 +26,30 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="SP_RegistrarNuevoNPS" FunctionName="panelModel.Store.SP_RegistrarNuevoNPS" />
+    <FunctionImportMapping FunctionImportName="SP_ConsultarNuevoMartrizNPS" FunctionName="panelModel.Store.SP_ConsultarNuevoMartrizNPS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="panelModel.SP_ConsultarNuevoMartrizNPS_Result">
+          <ScalarProperty Name="IDRESULTADO" ColumnName="IDRESULTADO" />
+          <ScalarProperty Name="idpregunta" ColumnName="idpregunta" />
+          <ScalarProperty Name="idtipo_respuesta" ColumnName="idtipo_respuesta" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_NPSConsultarUltimoRegistroPorId" FunctionName="panelModel.Store.SP_NPSConsultarUltimoRegistroPorId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="panelModel.SP_NPSConsultarUltimoRegistroPorId_Result">
+          <ScalarProperty Name="IDRESULTADO" ColumnName="IDRESULTADO" />
+          <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="canal" ColumnName="canal" />
+          <ScalarProperty Name="oficina" ColumnName="oficina" />
+          <ScalarProperty Name="VOTO" ColumnName="VOTO" />
+          <ScalarProperty Name="comentario_VOTO" ColumnName="comentario_VOTO" />
+          <ScalarProperty Name="COMENTARIO_PREG2" ColumnName="COMENTARIO_PREG2" />
+          <ScalarProperty Name="COMENTARIO_PREG3" ColumnName="COMENTARIO_PREG3" />
+          <ScalarProperty Name="fecharesultado" ColumnName="fecharesultado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_RegistrarNuevoMartrizNPS" FunctionName="panelModel.Store.SP_RegistrarNuevoMartrizNPS" />
   </EntityContainerMapping>
 </Mapping>

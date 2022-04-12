@@ -35,5 +35,32 @@
       <Parameter Name="COMENTARIO_PREG2" Mode="In" Type="String" />
       <Parameter Name="COMENTARIO_PREG3" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="SP_ConsultarNuevoMartrizNPS" ReturnType="Collection(panelModel.SP_ConsultarNuevoMartrizNPS_Result)">
+      <Parameter Name="IDRESULTADO" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_NPSConsultarUltimoRegistroPorId" ReturnType="Collection(panelModel.SP_NPSConsultarUltimoRegistroPorId_Result)">
+      <Parameter Name="documento" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_RegistrarNuevoMartrizNPS">
+      <Parameter Name="IDRESULTADO" Mode="In" Type="Int32" />
+      <Parameter Name="idpregunta" Mode="In" Type="Int32" />
+      <Parameter Name="idtipo_respuesta" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="SP_ConsultarNuevoMartrizNPS_Result">
+    <Property Type="Int32" Name="IDRESULTADO" Nullable="false" />
+    <Property Type="Int32" Name="idpregunta" Nullable="false" />
+    <Property Type="Int32" Name="idtipo_respuesta" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_NPSConsultarUltimoRegistroPorId_Result">
+    <Property Type="Int32" Name="IDRESULTADO" Nullable="false" />
+    <Property Type="String" Name="documento" Nullable="true" MaxLength="9" />
+    <Property Type="String" Name="canal" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="oficina" Nullable="true" MaxLength="Max" />
+    <Property Type="Int32" Name="VOTO" Nullable="true" />
+    <Property Type="String" Name="comentario_VOTO" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="COMENTARIO_PREG2" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="COMENTARIO_PREG3" Nullable="true" MaxLength="Max" />
+    <Property Type="DateTime" Name="fecharesultado" Nullable="true" Precision="23" />
+  </ComplexType>
 </Schema>

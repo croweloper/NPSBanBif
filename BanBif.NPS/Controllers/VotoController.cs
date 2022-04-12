@@ -23,8 +23,19 @@ namespace BanBif.NPS.Controllers
         [HttpPost]
         public ActionResult Index(NPS_NUEVO_RESULTADO request)
         {
+            var oBL = new NPSNuevoRegistro();
+            int resultado = oBL.RegistarEncuestaNPS(request);
 
-            return Json(new { result = true, data = request, mensaje = "Información guardada con éxito." }, JsonRequestBehavior.AllowGet);
+            if (resultado==1)
+            {
+                return Json(new { result = true, data = oBL.ConsultarEncuestaNPS(request), mensaje = "Información guardada con éxito." }, JsonRequestBehavior.AllowGet);
+            }
+            else {
+                return Json(new { result = false, data = request, mensaje = "Información no guardada." }, JsonRequestBehavior.AllowGet);                
+
+            }
+
+           
         }
 
         [HttpPost]

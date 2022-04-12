@@ -23,6 +23,17 @@
     <Property Name="idpregunta" Type="int" Nullable="false" />
     <Property Name="idtipo_respuesta" Type="int" />
   </EntityType>
+  <Function Name="SP_ConsultarNuevoMartrizNPS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDRESULTADO" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_NPSConsultarUltimoRegistroPorId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="documento" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_RegistrarNuevoMartrizNPS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDRESULTADO" Type="int" Mode="In" />
+    <Parameter Name="idpregunta" Type="int" Mode="In" />
+    <Parameter Name="idtipo_respuesta" Type="int" Mode="In" />
+  </Function>
   <Function Name="SP_RegistrarNuevoNPS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="documento" Type="varchar" Mode="In" />
     <Parameter Name="canal" Type="varchar" Mode="In" />

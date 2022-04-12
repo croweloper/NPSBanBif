@@ -16,8 +16,10 @@
         var APPurl = "@ViewBag.APPURL";
 
         var dni = localStorage.dnilogin;
+        var documento = localStorage.dnilogin;
         var controlador = localStorage.nuevoControlador;
         var oficina = localStorage.codoficina;
+        var usu = document.getElementById("hidIdUsuario").value;
 
         function CargarPagina() {
             var flag = document.getElementById("hidLoad").value;
@@ -96,6 +98,7 @@
             oBE.comments = comentario;
             oBE.token = "";
 
+            
 
 
             var Opciones = [];
@@ -138,6 +141,13 @@
 
             objRequest.Respuestas2 = Respuestas2;
 
+            oBE.documento = idUsuario;
+            oBE.canal = controlador;
+            oBE.oficina = oficina;
+            oBE.VOTO = rate
+            oBE.comentario_VOTO = comentario
+            oBE.COMENTARIO_PREG2 = ""
+            oBE.COMENTARIO_PREG3 = coment3;
 
 
             $.ajax({
@@ -148,7 +158,16 @@
                 processData: true,
                 data: JSON.stringify(oBE),
                 success: function (response) {
+
                     if (response.result) {
+
+                        //DataEnviada Voto
+                        console.log({ oBE });
+
+                        //DataRecibida Voto
+                        console.log({ response });
+
+                        objRequest.ID = response.data.IDRESULTADO;
 
                         $.ajax({
                             url: '/SaveDigital',
@@ -159,12 +178,21 @@
                             data: JSON.stringify(objRequest),
                             success: function (responseDigital) {
                                 console.log(responseDigital);
-                                //alert("test");
-                                //if (responseDigital.result) {
+
+                                if (responseDigital.result) {
+
+                                    //DataEnviada Digital
+                                    console.log({ objRequest });
+
+                                    //DataRecibida Digital
+                                    console.log({ responseDigital });
+                                    //var mensaje = response.mensaje;
+                                    //localStorage.setItem('MensajePoll', mensaje);
                                     var mensaje = response.mensaje;
                                     localStorage.setItem('MensajePoll', mensaje);
                                     window.location.href = APPurl + "/Gracias/Index";
-                                //}
+                                }
+                                
                             }
                         });
 

@@ -62,5 +62,40 @@ namespace BanBif.NPS.BE
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RegistrarNuevoNPS", documentoParameter, canalParameter, oficinaParameter, vOTOParameter, comentario_VOTOParameter, cOMENTARIO_PREG2Parameter, cOMENTARIO_PREG3Parameter);
         }
+    
+        public virtual ObjectResult<SP_ConsultarNuevoMartrizNPS_Result> SP_ConsultarNuevoMartrizNPS(Nullable<int> iDRESULTADO)
+        {
+            var iDRESULTADOParameter = iDRESULTADO.HasValue ?
+                new ObjectParameter("IDRESULTADO", iDRESULTADO) :
+                new ObjectParameter("IDRESULTADO", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_ConsultarNuevoMartrizNPS_Result>("SP_ConsultarNuevoMartrizNPS", iDRESULTADOParameter);
+        }
+    
+        public virtual ObjectResult<SP_NPSConsultarUltimoRegistroPorId_Result> SP_NPSConsultarUltimoRegistroPorId(string documento)
+        {
+            var documentoParameter = documento != null ?
+                new ObjectParameter("documento", documento) :
+                new ObjectParameter("documento", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_NPSConsultarUltimoRegistroPorId_Result>("SP_NPSConsultarUltimoRegistroPorId", documentoParameter);
+        }
+    
+        public virtual int SP_RegistrarNuevoMartrizNPS(Nullable<int> iDRESULTADO, Nullable<int> idpregunta, Nullable<int> idtipo_respuesta)
+        {
+            var iDRESULTADOParameter = iDRESULTADO.HasValue ?
+                new ObjectParameter("IDRESULTADO", iDRESULTADO) :
+                new ObjectParameter("IDRESULTADO", typeof(int));
+    
+            var idpreguntaParameter = idpregunta.HasValue ?
+                new ObjectParameter("idpregunta", idpregunta) :
+                new ObjectParameter("idpregunta", typeof(int));
+    
+            var idtipo_respuestaParameter = idtipo_respuesta.HasValue ?
+                new ObjectParameter("idtipo_respuesta", idtipo_respuesta) :
+                new ObjectParameter("idtipo_respuesta", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RegistrarNuevoMartrizNPS", iDRESULTADOParameter, idpreguntaParameter, idtipo_respuestaParameter);
+        }
     }
 }
