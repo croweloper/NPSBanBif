@@ -13,8 +13,8 @@ namespace BanBif.NPS.Controllers
            // ViewBag.RutaImagen = ConfigurationManager.AppSettings.Get("RutaImagen").ToString();
 
             ViewBag.CargarPagina = "1";
-            ViewBag.Rating = "";
-            ViewBag.Available = "";
+            ViewBag.Rating = "1";
+            ViewBag.Available = "1";
             ViewBag.Mensaje = "";
             ViewBag.IdUsuario = dni;
 

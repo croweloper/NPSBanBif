@@ -11,138 +11,7 @@
     <title>BanBif | NPS Cuenta Digital</title>
     <script src="~/Library/js/jquery-2.1.3-jquery.min.js"></script>
 
-    <script type="text/javascript">
-        var APPurl = "@ViewBag.APPURL";
-
-        var dni = localStorage.dnilogin;
-        var controlador = localStorage.nuevoControlador;
-        var oficina = localStorage.codoficina;
-
-        var canal = controlador;
-        var activacion = "SI";
-
-        function CargarPagina() {
-            var flag = document.getElementById("hidLoad").value;
-            var rate = document.getElementById("hidRating").value;
-            var available = document.getElementById("hidAvailable").value;
-
-            var mensaje = document.getElementById("hidMensaje").value;
-            localStorage.setItem('MensajePoll', mensaje);
-
-            if (flag == "0") {
-                window.location.href = APPurl +  "/Gracias/Index";
-            }
-
-            if (available == "2" || available == "3") {
-                window.location.href = APPurl + "/Gracias/Index";
-            }
-
-            Rating(rate);
-
-            //ACTIVACION
-            //var activacion = document.getElementById("hidActivacion").value;
-            //var activacion = "SI";
-
-            if (activacion == "SI") {
-                $('#divPreg2').hide();
-                $('#divPreg2a').hide();
-                $('#divPreg3').hide();
-                $('#divPreg3a').hide();
-            } else {
-                $('#divPreg2').show();
-                $('#divPreg2a').show();
-                $('#divPreg3').show();
-                $('#divPreg3a').show();
-            }
-        }
-        function Rating(rate) {
-            for (i = 0; i <= 10; i++) {
-                document.getElementById("arrow" + i).style.visibility = "hidden";
-                if (rate == i) {
-                    document.getElementById("arrow" + i).style.visibility = "visible";
-                    document.getElementById("hidRating").value = rate;
-                }
-            }
-
-            if (rate <= 10) {
-                document.getElementById("pPreguntaComentario").innerHTML = "¿Qué es lo que más le gusta de BANBIF?";
-            }
-            if (rate <= 8) {
-                document.getElementById("pPreguntaComentario").innerHTML = "¿Qué nos faltaría para mejorar?";
-            }
-            if (rate <= 6) {
-                document.getElementById("pPreguntaComentario").innerHTML = "¿Por qué motivo nos brinda esa calificación?";
-            }
-        }
-        function RegistrarVoto() {
-
-            var rate = document.getElementById("hidRating").value;
-            var comentario = document.getElementById("comments").value;
-            var idUsuario = dni
-
-            if (comentario == "") {
-                alert("Por favor escribir un comentario.");
-                return false;
-            }
-
-            //var activacion = document.getElementById("hidActivacion").value;
-            var pregunta2 = document.getElementById("commentsPreg2").value;
-            var pregunta3 = document.getElementById("commentsPreg3").value;
-
-            if (activacion == "NO" && pregunta2 == "") {
-                alert("Por favor responder la pregunta Nro.2.");
-                return false;
-            }
-
-            if (activacion == "NO" && pregunta3 == "") {
-                alert("Por favor responder la pregunta Nro.3.");
-                return false;
-            }
-
-            var oBE = {};
-            oBE.id = idUsuario;
-            oBE.result = rate;
-            oBE.comments = comentario;
-            oBE.token = "";
-
-            var objRequest = {};
-            objRequest.ID = idUsuario;
-            objRequest.Respuesta = pregunta2;
-            objRequest.Respuesta2 = pregunta3;
-
-
-            $.ajax({
-                url: '/voto',
-                type: "POST",
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                processData: true,
-                data: JSON.stringify(oBE),
-                success: function (response) {
-                    if (response.result) {
-
-                        $.ajax({
-                            url: '/SaveCuentaDigital',
-                            type: "POST",
-                            dataType: "json",
-                            contentType: "application/json; charset=utf-8",
-                            processData: true,
-                            data: JSON.stringify(objRequest),
-                            success: function (responseDigital) {
-                                if (responseDigital.result) {
-                                    var mensaje = response.mensaje;
-                                    localStorage.setItem('MensajePoll', mensaje);
-                                    window.location.href = APPurl + "/Gracias/Index";
-                                }
-                            }
-                        });
-
-
-                    }
-                }
-            });
-        }
-    </script>
+    
 </head>
 <body onload="CargarPagina()" style="background-image:url('/Library/img/banbif/fondo.png'); background-repeat:no-repeat; background-position-x:center">
     <input type="hidden" id="hidLoad" value="@ViewBag.CargarPagina" />
@@ -275,3 +144,159 @@
     </div>
 </body>
 </html>
+<script type="text/javascript">
+        var APPurl = "@ViewBag.APPURL";
+
+        var dni = localStorage.dnilogin;
+        var documento = localStorage.dnilogin;
+        var controlador = localStorage.nuevoControlador;
+        var oficina = localStorage.codoficina;
+        var usu = document.getElementById("hidIdUsuario").value;
+
+        var canal = controlador;
+        var activacion = "SI";
+
+        function CargarPagina() {
+            var flag = document.getElementById("hidLoad").value;
+            var rate = document.getElementById("hidRating").value;
+            var available = document.getElementById("hidAvailable").value;
+
+            var mensaje = document.getElementById("hidMensaje").value;
+            localStorage.setItem('MensajePoll', mensaje);
+
+            if (flag == "0") {
+                window.location.href = APPurl +  "/Gracias/Index";
+            }
+
+            if (available == "2" || available == "3") {
+                window.location.href = APPurl + "/Gracias/Index";
+            }
+
+            Rating(rate);
+
+            //ACTIVACION
+            //var activacion = document.getElementById("hidActivacion").value;
+            //var activacion = "SI";
+
+            if (activacion == "SI") {
+                $('#divPreg2').hide();
+                $('#divPreg2a').hide();
+                $('#divPreg3').hide();
+                $('#divPreg3a').hide();
+            } else {
+                $('#divPreg2').show();
+                $('#divPreg2a').show();
+                $('#divPreg3').show();
+                $('#divPreg3a').show();
+            }
+        }
+        function Rating(rate) {
+            for (i = 0; i <= 10; i++) {
+                document.getElementById("arrow" + i).style.visibility = "hidden";
+                if (rate == i) {
+                    document.getElementById("arrow" + i).style.visibility = "visible";
+                    document.getElementById("hidRating").value = rate;
+                }
+            }
+
+            if (rate <= 10) {
+                document.getElementById("pPreguntaComentario").innerHTML = "¿Qué es lo que más le gusta de BANBIF?";
+            }
+            if (rate <= 8) {
+                document.getElementById("pPreguntaComentario").innerHTML = "¿Qué nos faltaría para mejorar?";
+            }
+            if (rate <= 6) {
+                document.getElementById("pPreguntaComentario").innerHTML = "¿Por qué motivo nos brinda esa calificación?";
+            }
+        }
+        function RegistrarVoto() {
+
+            var rate = document.getElementById("hidRating").value;
+            var comentario = document.getElementById("comments").value;
+            var idUsuario = dni
+
+            if (comentario == "") {
+                alert("Por favor escribir un comentario.");
+                return false;
+            }
+
+            //var activacion = document.getElementById("hidActivacion").value;
+            var pregunta2 = document.getElementById("commentsPreg2").value;
+            var pregunta3 = document.getElementById("commentsPreg3").value;
+
+            if (activacion == "NO" && pregunta2 == "") {
+                alert("Por favor responder la pregunta Nro.2.");
+                return false;
+            }
+
+            if (activacion == "NO" && pregunta3 == "") {
+                alert("Por favor responder la pregunta Nro.3.");
+                return false;
+            }
+
+            var oBE = {};
+            oBE.id = idUsuario;
+            oBE.result = rate;
+            oBE.comments = comentario;
+            oBE.token = "";
+
+
+            oBE.documento = idUsuario;
+            oBE.canal = controlador;
+            oBE.oficina = oficina;
+            oBE.VOTO = rate
+            oBE.comentario_VOTO = comentario
+            oBE.COMENTARIO_PREG2 = ""
+            oBE.COMENTARIO_PREG3 = ""
+
+            var objRequest = {};
+            objRequest.ID = idUsuario;
+            objRequest.Respuesta = pregunta2;
+            objRequest.Respuesta2 = pregunta3;
+
+
+            $.ajax({
+                url: '/voto',
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                processData: true,
+                data: JSON.stringify(oBE),
+                success: function (response) {
+                    if (response.result) {
+
+                        //DataEnviada Voto
+                        console.log({ oBE });
+
+                        //DataRecibida Voto
+                        console.log({ response });
+                        objRequest.ID = response.data.IDRESULTADO;
+
+                        $.ajax({
+                            url: '/SaveCuentaDigital',
+                            type: "POST",
+                            dataType: "json",
+                            contentType: "application/json; charset=utf-8",
+                            processData: true,
+                            data: JSON.stringify(objRequest),
+                            success: function (responseDigital) {
+                                if (responseDigital.result) {
+
+                                    //DataEnviada Digital
+                                    console.log({ objRequest });
+
+                                    //DataRecibida Digital
+                                    console.log({ responseDigital });
+                                    var mensaje = response.mensaje;
+                                    localStorage.setItem('MensajePoll', mensaje);
+                                    window.location.href = APPurl + "/Gracias/Index";
+                                }
+                            }
+                        });
+
+
+                    }
+                }
+            });
+        }
+</script>

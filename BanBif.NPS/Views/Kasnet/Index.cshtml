@@ -14,10 +14,11 @@
 
     <script type="text/javascript">
         var APPurl = "@ViewBag.APPURL";
-
         var dni = localStorage.dnilogin;
+        var documento = localStorage.dnilogin;
         var controlador = localStorage.nuevoControlador;
         var oficina = localStorage.codoficina;
+        var usu = document.getElementById("hidIdUsuario").value;
 
         function CargarPagina() {
             var flag = document.getElementById("hidLoad").value;
@@ -86,6 +87,13 @@
             oBE.comments = comentario;
             oBE.token = "";
 
+            oBE.documento = idUsuario;
+            oBE.canal = controlador;
+            oBE.oficina = oficina;
+            oBE.VOTO = rate
+            oBE.comentario_VOTO = comentario
+            oBE.COMENTARIO_PREG2 = ""
+            
 
 
             var Opciones = [];
@@ -139,6 +147,13 @@
                     console.log(response);
                     if (response.result) {
 
+                        //DataEnviada Voto
+                        console.log({ oBE });
+
+                        //DataRecibida Voto
+                        console.log({ response });
+                        objRequest.ID = response.data.IDRESULTADO;
+
                         $.ajax({
                             url: APPurl + '/SaveDigital',
                             type: "POST",
@@ -148,9 +163,15 @@
                             data: JSON.stringify(objRequest),
                             success: function (responseDigital) {
                                 if (responseDigital.result) {
+
+                                    //DataEnviada Digital
+                                    console.log({ objRequest });
+
+                                    //DataRecibida Digital
+                                    console.log({ responseDigital });
                                     var mensaje = response.mensaje;
                                     localStorage.setItem('MensajePoll', mensaje);
-                                    window.location.href = APPurl +  "/Gracias/Index";
+                                    window.location.href = APPurl + "/Gracias/Index";
                                 }
                             }
                         });
