@@ -17,6 +17,7 @@ C:\Users\DRomero\Desktop\MDP\Repositorios\NPSBanBif\BanBif.NPS.BE\bin\Debug\Enti
 C:\Users\DRomero\Desktop\MDP\Repositorios\NPSBanBif\BanBif.NPS.BE\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\DRomero\Desktop\MDP\Repositorios\NPSBanBif\BanBif.NPS.BE\bin\Debug\EntityFramework.xml
 C:\Users\DRomero\Desktop\MDP\Repositorios\NPSBanBif\BanBif.NPS.BE\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\DRomero\Desktop\MDP\Repositorios\NPSBanBif\BanBif.NPS.BE\obj\Debug\BanBif.NPS.BE.csproj.AssemblyReference.cache
 C:\Users\DRomero\Desktop\MDP\Repositorios\NPSBanBif\BanBif.NPS.BE\obj\Debug\BanBif.NPS.BE.csproj.CoreCompileInputs.cache
 C:\Users\DRomero\Desktop\MDP\Repositorios\NPSBanBif\BanBif.NPS.BE\obj\Debug\BanBif.NPS.BE.csproj.CopyComplete
 C:\Users\DRomero\Desktop\MDP\Repositorios\NPSBanBif\BanBif.NPS.BE\obj\Debug\BanBif.NPS.BE.dll

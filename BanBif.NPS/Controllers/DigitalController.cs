@@ -156,7 +156,7 @@ namespace BanBif.NPS.Controllers
             catch (System.Exception)
             {
 
-                throw;
+               
             }
 
             

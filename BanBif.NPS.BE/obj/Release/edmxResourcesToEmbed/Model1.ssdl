@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="panelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="NPS_NUEVO_RESULTADO">
+    <Key>
+      <PropertyRef Name="IDRESULTADO" />
+    </Key>
+    <Property Name="IDRESULTADO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="documento" Type="varchar" MaxLength="9" />
+    <Property Name="canal" Type="varchar" MaxLength="20" />
+    <Property Name="oficina" Type="text" />
+    <Property Name="VOTO" Type="int" />
+    <Property Name="comentario_VOTO" Type="text" />
+    <Property Name="COMENTARIO_PREG2" Type="text" />
+    <Property Name="COMENTARIO_PREG3" Type="text" />
+    <Property Name="fecharesultado" Type="datetime" />
+  </EntityType>
+  <EntityType Name="NPS_NUEVO_RESULTADO_MATRIZ">
+    <Key>
+      <PropertyRef Name="IDRESULTADO" />
+      <PropertyRef Name="idpregunta" />
+    </Key>
+    <Property Name="IDRESULTADO" Type="int" Nullable="false" />
+    <Property Name="idpregunta" Type="int" Nullable="false" />
+    <Property Name="idtipo_respuesta" Type="int" />
+  </EntityType>
+  <Function Name="SP_ConsultarNuevoMartrizNPS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDRESULTADO" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_NPSConsultarUltimoRegistroPorId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="documento" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_RegistrarNuevoMartrizNPS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDRESULTADO" Type="int" Mode="In" />
+    <Parameter Name="idpregunta" Type="int" Mode="In" />
+    <Parameter Name="idtipo_respuesta" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_RegistrarNuevoNPS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="documento" Type="varchar" Mode="In" />
+    <Parameter Name="canal" Type="varchar" Mode="In" />
+    <Parameter Name="oficina" Type="text" Mode="In" />
+    <Parameter Name="VOTO" Type="int" Mode="In" />
+    <Parameter Name="comentario_VOTO" Type="text" Mode="In" />
+    <Parameter Name="COMENTARIO_PREG2" Type="text" Mode="In" />
+    <Parameter Name="COMENTARIO_PREG3" Type="text" Mode="In" />
+  </Function>
+  <EntityContainer Name="panelModelStoreContainer">
+    <EntitySet Name="NPS_NUEVO_RESULTADO" EntityType="Self.NPS_NUEVO_RESULTADO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NPS_NUEVO_RESULTADO_MATRIZ" EntityType="Self.NPS_NUEVO_RESULTADO_MATRIZ" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

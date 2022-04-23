@@ -88,7 +88,7 @@ namespace BanBif.NPS.Controllers
             catch (Exception)
             {
 
-                throw;
+                
             }
             
 
